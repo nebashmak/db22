@@ -16,7 +16,7 @@ public class Towns {
     @Column(name = "town_name", length = 30)
     private String name;
 
-    @Column(name = "distance", nullable = false) 
+    @Column(name = "distance", nullable = false)
     private Long distance;
 
     public Towns() {
@@ -28,15 +28,15 @@ public class Towns {
     }
 
 
-    public Long getTown_id() {
+    public Long getTownId() {
         return id;
     }
 
-    public String getTown_name() {
+    public String getTownName() {
         return name;
     }
 
-    public void setTown_name(String town_name) {
+    public void setTownName(String town_name) {
         this.name = town_name;
     }
 

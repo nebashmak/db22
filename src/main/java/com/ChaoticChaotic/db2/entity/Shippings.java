@@ -1,6 +1,7 @@
 package com.ChaoticChaotic.db2.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -22,30 +23,23 @@ public class Shippings {
     private Towns town;
 
     @Column(name = "start_date", nullable = false)
-    private Date startDate;
+    private LocalDate startDate;
 
     @Column(name = "end_date", nullable = false)
-    private Date endDate;
+    private LocalDate endDate;
 
     public Shippings() {
     }
 
-    public Shippings(Items item, Towns town, Date startDate, Date endDate) {
-        this.item = item;
-        this.town = town;
+    public Shippings(LocalDate startDate, LocalDate endDate, Towns town, Items item) {
         this.startDate = startDate;
         this.endDate = endDate;
-    }
-
-    public Shippings(Long id, Items item, Towns town, Date startDate) {
-        this.id = id;
         this.item = item;
         this.town = town;
-        this.startDate = startDate;
     }
 
 
-    public Long getShipping_id() {
+    public Long getShippingId() {
         return id;
     }
 
@@ -65,19 +59,19 @@ public class Shippings {
         this.town = town;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date start_date) {
+    public void setStartDate(LocalDate start_date) {
         this.startDate = start_date;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 

@@ -27,7 +27,7 @@ public class Items {
     }
 
 
-    public Long getItem_id() {
+    public Long getItemId() {
         return id;
     }
 

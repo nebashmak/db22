@@ -3,10 +3,11 @@ package com.ChaoticChaotic.db2.services;
 
 import com.ChaoticChaotic.db2.entity.Shippings;
 
-import java.util.Date;
+import java.util.List;
+
 
 public interface ShippingsService {
-    void addShipping(Shippings shipping);
-    void deleteShipping(Long shipping_id);
-    void showShipping();
+    String addShipping(Shippings shipping);
+    String deleteShipping(Long id);
+    List<Shippings> showShipping();
 }

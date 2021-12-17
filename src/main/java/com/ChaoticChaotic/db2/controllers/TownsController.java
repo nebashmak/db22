@@ -19,7 +19,7 @@ public class TownsController {
     }
 
     @DeleteMapping("/towns/{id}")
-    private void deleteTown(@RequestParam("id") Long id){
+    private void deleteTown(@PathVariable("id") Long id){
         townsimpl.deleteTown(id);
     }
 

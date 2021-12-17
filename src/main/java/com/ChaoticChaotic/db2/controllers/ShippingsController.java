@@ -20,7 +20,7 @@ public class ShippingsController {
     }
 
     @DeleteMapping("/shippings/{id}")
-    private void deleteTown(@RequestParam("id") Long id){
+    private void deleteTown(@PathVariable("id") Long id){
         shippingsImpl.deleteShipping(id);
     }
 

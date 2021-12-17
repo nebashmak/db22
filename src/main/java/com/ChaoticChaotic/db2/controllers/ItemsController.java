@@ -20,7 +20,7 @@ public class ItemsController {
     }
 
     @DeleteMapping("/items/{id}")
-    private void deleteItem(@RequestParam("id") Long id){
+    private void deleteItem(@PathVariable("id") Long id){
         itemsImpl.deleteItem(id);
     }
 

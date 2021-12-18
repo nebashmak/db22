@@ -2,7 +2,6 @@ package com.ChaoticChaotic.db2.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -14,12 +13,12 @@ public class Shippings {
     @Column(name = "shipping_id", nullable = false)
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "items_id")
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "items_id", unique = true, nullable = false, updatable = false)
     private Items item;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "town_id")
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "town_id", unique = true, nullable = false, updatable = false)
     private Towns town;
 
     @Column(name = "start_date", nullable = false)

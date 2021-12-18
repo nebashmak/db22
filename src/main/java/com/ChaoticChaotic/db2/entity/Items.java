@@ -18,6 +18,7 @@ public class Items {
     @Column(name = "quantity",nullable = false )
     private Long quantity;
 
+
     public Items() {
     }
 
@@ -25,7 +26,6 @@ public class Items {
         this.name = name;
         this.quantity = quantity;
     }
-
 
     public Long getItemId() {
         return id;

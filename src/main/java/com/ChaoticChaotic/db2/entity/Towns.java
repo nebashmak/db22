@@ -19,6 +19,7 @@ public class Towns {
     @Column(name = "distance", nullable = false)
     private Long distance;
 
+
     public Towns() {
     }
 

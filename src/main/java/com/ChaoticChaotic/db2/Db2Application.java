@@ -11,10 +11,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.text.SimpleDateFormat;
+
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
+
 
 @SpringBootApplication
 public class Db2Application {
@@ -29,6 +28,7 @@ public class Db2Application {
 										ShippingsRepository shippingsRepository,
 										TownsRepository townsRepository) {
 		return args -> {
+
 			Items item1 = new Items("Fork", 156L);
 			Items item2 = new Items("Scoop", 1563L);
 			itemsRepository.save(item1);
@@ -43,6 +43,12 @@ public class Db2Application {
 			Shippings shipping2 = new Shippings(date,date2,town2,item2);
 			shippingsRepository.save(shipping1);
 			shippingsRepository.save(shipping2);
+
+
+
+
+
+
 		};
 	}
 

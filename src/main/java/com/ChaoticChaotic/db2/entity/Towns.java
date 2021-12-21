@@ -19,6 +19,8 @@ public class Towns {
     @Column(name = "distance", nullable = false)
     private Long distance;
 
+    @OneToOne(mappedBy = "town")
+    private Shippings shipping;
 
     public Towns() {
     }

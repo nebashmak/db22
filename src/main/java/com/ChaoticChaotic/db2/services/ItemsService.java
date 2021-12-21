@@ -5,7 +5,7 @@ import com.ChaoticChaotic.db2.entity.Items;
 import java.util.List;
 
 public interface ItemsService {
-    String deleteItem(Long id);
+    void deleteItem(Long id);
     List<Items> showItems();
-    String addItem(Items item);
+    void addItem(Items item);
 }

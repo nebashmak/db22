@@ -1,6 +1,7 @@
 package com.ChaoticChaotic.db2.controllers;
 
 import com.ChaoticChaotic.db2.entity.Towns;
+import com.ChaoticChaotic.db2.services.TownsService;
 import com.ChaoticChaotic.db2.services.impl.TownsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,21 +12,25 @@ import java.util.List;
 public class TownsController {
 
     @Autowired
-    TownsImpl townsimpl;
+    private TownsService townsService;
 
     @GetMapping("/towns")
     private List<Towns> showTowns(){
-        return townsimpl.showTowns();
+        return townsService.showTowns();
     }
 
     @DeleteMapping("/towns/{id}")
     private void deleteTown(@PathVariable("id") Long id){
-        townsimpl.deleteTown(id);
+        townsService.deleteTown(id);
     }
 
     @PostMapping("/towns")
     private Long addTown(@RequestBody Towns town){
-        townsimpl.addTown(town);
+        townsService.addTown(town);
         return town.getTownId();
+    }
+
+    public TownsController(TownsImpl townsService) {
+        this.townsService = townsService;
     }
 }

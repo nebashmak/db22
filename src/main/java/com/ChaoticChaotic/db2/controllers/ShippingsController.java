@@ -1,7 +1,7 @@
 package com.ChaoticChaotic.db2.controllers;
 
 import com.ChaoticChaotic.db2.entity.Shippings;
-import com.ChaoticChaotic.db2.entity.Towns;
+import com.ChaoticChaotic.db2.services.ShippingsService;
 import com.ChaoticChaotic.db2.services.impl.ShippingsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +12,8 @@ import java.util.List;
 public class ShippingsController {
 
     @Autowired
-    ShippingsImpl shippingsImpl;
+    private ShippingsService shippingsImpl;
+
 
     @GetMapping("/shippings")
     private List<Shippings> showShipping(){
@@ -28,6 +29,10 @@ public class ShippingsController {
     private Long addShipping(@RequestBody Shippings shipping){
         shippingsImpl.addShipping(shipping);
         return shipping.getShippingId();
+    }
+
+    public ShippingsController(ShippingsImpl shippingsImpl) {
+        this.shippingsImpl = shippingsImpl;
     }
 
 }

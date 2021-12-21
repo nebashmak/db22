@@ -13,21 +13,22 @@ public class Shippings {
     @Column(name = "shipping_id", nullable = false)
     private Long id;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "items_id", unique = true, nullable = false, updatable = false)
-    private Items item;
-
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "town_id", unique = true, nullable = false, updatable = false)
-    private Towns town;
-
-    @Column(name = "start_date", nullable = false)
+    @Column(name = "start_date")
     private LocalDate startDate;
 
-    @Column(name = "end_date", nullable = false)
+    @Column(name = "end_date")
     private LocalDate endDate;
 
-    public Shippings() {
+    @OneToOne
+    @JoinColumn(name = "town_id",referencedColumnName = "town_id")
+    private Towns town;
+
+    @OneToOne
+    @JoinColumn(name = "items_id", referencedColumnName = "item_id")
+    private Items item;
+
+
+    public Shippings(Long id, LocalDate startDate, LocalDate endDate, Towns town, Items item) {
     }
 
     public Shippings(LocalDate startDate, LocalDate endDate, Towns town, Items item) {
@@ -35,6 +36,9 @@ public class Shippings {
         this.endDate = endDate;
         this.item = item;
         this.town = town;
+    }
+
+    public Shippings() {
     }
 
 

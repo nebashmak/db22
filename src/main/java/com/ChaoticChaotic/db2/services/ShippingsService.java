@@ -7,7 +7,7 @@ import java.util.List;
 
 
 public interface ShippingsService {
-    String addShipping(Shippings shipping);
-    String deleteShipping(Long id);
+    void addShipping(Shippings shipping);
+    void deleteShipping(Long id);
     List<Shippings> showShipping();
 }

@@ -1,15 +1,14 @@
 package com.ChaoticChaotic.db2.services.impl;
 
 import com.ChaoticChaotic.db2.entity.Items;
-import com.ChaoticChaotic.db2.entity.Towns;
+import com.ChaoticChaotic.db2.exception.BadRequestException;
+import com.ChaoticChaotic.db2.exception.IdNotFoundException;
 import com.ChaoticChaotic.db2.repository.ItemsRepository;
 import com.ChaoticChaotic.db2.repository.ShippingsRepository;
 import com.ChaoticChaotic.db2.services.ItemsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -18,28 +17,35 @@ public class ItemsImpl implements ItemsService {
 
     @Autowired
     private ItemsRepository itemsRepository;
-
     @Autowired
     private ShippingsRepository shippingsRepository;
 
 
-    public String deleteItem(Long id) {
-        if(!(shippingsRepository.findById(id).isPresent())) {
+
+    public void deleteItem(Long id) {
+        if(!itemsRepository.existsById(id)) {
+            throw new IdNotFoundException(
+                    "Line with id " + id + " does not exists");
+        } else if(!shippingsRepository.existsById(id)) {
             itemsRepository.deleteById(id);
+        } else {
+            throw new BadRequestException(
+                    "Line with id " + id + " is busy");
         }
-        return "Deleted";
     }
 
 
     public List<Items> showItems() {
-        List<Items> allItems = new ArrayList<>();
-        itemsRepository.findAll().forEach(town -> allItems.add(town));
-        return allItems;
+        return itemsRepository.findAll();
     }
 
 
-    public String addItem(Items item) {
+    public void addItem(Items item) {
         itemsRepository.save(item);
-        return "Saved";
+    }
+
+    public ItemsImpl(ItemsRepository itemsRepository, ShippingsRepository shippingsRepository) {
+        this.itemsRepository = itemsRepository;
+        this.shippingsRepository = shippingsRepository;
     }
 }

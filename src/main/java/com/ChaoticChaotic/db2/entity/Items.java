@@ -1,7 +1,11 @@
 package com.ChaoticChaotic.db2.entity;
 
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Objects;
+
 
 @Entity
 @Table(name = "items")
@@ -9,7 +13,7 @@ public class Items {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "item_id")
+    @Column(name = "item_id", nullable = false)
     private Long id;
 
     @Column(name = "item_name", length = 30)
@@ -17,6 +21,9 @@ public class Items {
 
     @Column(name = "quantity",nullable = false )
     private Long quantity;
+
+    @OneToOne(mappedBy = "item")
+    private Shippings shipping;
 
 
     public Items() {

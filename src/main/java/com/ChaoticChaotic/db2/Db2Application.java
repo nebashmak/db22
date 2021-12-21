@@ -6,21 +6,28 @@ import com.ChaoticChaotic.db2.entity.Towns;
 import com.ChaoticChaotic.db2.repository.ItemsRepository;
 import com.ChaoticChaotic.db2.repository.ShippingsRepository;
 import com.ChaoticChaotic.db2.repository.TownsRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 
+import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 
 
 @SpringBootApplication
 public class Db2Application {
 
+
 	public static void main(String[] args) {
 		SpringApplication.run(Db2Application.class, args);
 	}
+
+
 
 
 	@Bean
@@ -43,12 +50,6 @@ public class Db2Application {
 			Shippings shipping2 = new Shippings(date,date2,town2,item2);
 			shippingsRepository.save(shipping1);
 			shippingsRepository.save(shipping2);
-
-
-
-
-
-
 		};
 	}
 

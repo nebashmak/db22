@@ -32,7 +32,7 @@ public class ItemsController {
         return item.getItemId();
     }
 
-    public ItemsController(ItemsImpl itemsService) {
+    public ItemsController(ItemsService itemsService) {
         this.itemsService = itemsService;
     }
 }

@@ -29,6 +29,11 @@ public class Shippings {
 
 
     public Shippings(Long id, LocalDate startDate, LocalDate endDate, Towns town, Items item) {
+        this.id = id;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.item = item;
+        this.town = town;
     }
 
     public Shippings(LocalDate startDate, LocalDate endDate, Towns town, Items item) {

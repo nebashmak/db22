@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Towns {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "town_id", nullable = false)
     private Long id;
 
@@ -28,6 +28,13 @@ public class Towns {
     public Towns(String name, Long distance) {
         this.name = name;
         this.distance = distance;
+    }
+
+    public Towns(Long id, String name, Long distance) {
+        this.id = id;
+        this.name = name;
+        this.distance = distance;
+        this.shipping = shipping;
     }
 
 

@@ -20,28 +20,24 @@ public class ItemsImpl implements ItemsService {
     @Autowired
     private ShippingsRepository shippingsRepository;
 
-
+    public void addItem(Items item) {
+        itemsRepository.save(item);
+    }
 
     public void deleteItem(Long id) {
         if(!itemsRepository.existsById(id)) {
             throw new IdNotFoundException(
                     "Line with id " + id + " does not exists");
-        } else if(!shippingsRepository.existsById(id)) {
-            itemsRepository.deleteById(id);
-        } else {
+        }
+        if(shippingsRepository.existsById(id)) {
             throw new BadRequestException(
                     "Line with id " + id + " is busy");
         }
+        itemsRepository.deleteById(id);
     }
-
 
     public List<Items> showItems() {
         return itemsRepository.findAll();
-    }
-
-
-    public void addItem(Items item) {
-        itemsRepository.save(item);
     }
 
     public ItemsImpl(ItemsRepository itemsRepository, ShippingsRepository shippingsRepository) {

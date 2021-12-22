@@ -12,27 +12,27 @@ import java.util.List;
 public class ShippingsController {
 
     @Autowired
-    private ShippingsService shippingsImpl;
+    private ShippingsService shippingsService;
 
 
     @GetMapping("/shippings")
     private List<Shippings> showShipping(){
-        return shippingsImpl.showShipping();
+        return shippingsService.showShipping();
     }
 
     @DeleteMapping("/shippings/{id}")
     private void deleteTown(@PathVariable("id") Long id){
-        shippingsImpl.deleteShipping(id);
+        shippingsService.deleteShipping(id);
     }
 
     @PostMapping("/shippings")
     private Long addShipping(@RequestBody Shippings shipping){
-        shippingsImpl.addShipping(shipping);
+        shippingsService.addShipping(shipping);
         return shipping.getShippingId();
     }
 
-    public ShippingsController(ShippingsImpl shippingsImpl) {
-        this.shippingsImpl = shippingsImpl;
+    public ShippingsController(ShippingsImpl shippingsService) {
+        this.shippingsService = shippingsService;
     }
 
 }

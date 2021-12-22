@@ -16,7 +16,6 @@ public class ShippingsImpl implements ShippingsService {
     @Autowired
     private ShippingsRepository shippingsRepository;
 
-
     public void addShipping(Shippings shipping) {
     if (!shipping.getStartDate().isBefore(shipping.getEndDate())){
             throw new BadRequestException(
@@ -26,7 +25,6 @@ public class ShippingsImpl implements ShippingsService {
         shippingsRepository.save(shipping);
     }
 
-
     public void deleteShipping(Long id) {
         if(!shippingsRepository.existsById(id)) {
             throw new IdNotFoundException(
@@ -34,7 +32,6 @@ public class ShippingsImpl implements ShippingsService {
         }
         shippingsRepository.deleteById(id);
     }
-
 
     public List<Shippings> showShipping() {
         return shippingsRepository.findAll();

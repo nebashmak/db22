@@ -17,14 +17,10 @@ public class TownsImpl implements TownsService {
 
     @Autowired
     private TownsRepository townsRepository;
-    @Autowired
-    private ShippingsRepository shippingsRepository;
-
 
     public void addTown(Towns town) {
         townsRepository.save(town);
     }
-
 
     public void deleteTown(Long id) {
         if(!townsRepository.existsById(id)) {
@@ -34,13 +30,11 @@ public class TownsImpl implements TownsService {
         townsRepository.deleteById(id);
     }
 
-
     public List<Towns> showTowns() {
         return townsRepository.findAll();
     }
 
-    public TownsImpl(TownsRepository townsRepository, ShippingsRepository shippingsRepository) {
+    public TownsImpl(TownsRepository townsRepository) {
         this.townsRepository = townsRepository;
-        this.shippingsRepository = shippingsRepository;
     }
 }

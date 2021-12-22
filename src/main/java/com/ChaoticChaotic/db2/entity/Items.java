@@ -34,6 +34,12 @@ public class Items {
         this.quantity = quantity;
     }
 
+    public Items(Long id, String name, Long quantity) {
+        this.id = id;
+        this.name = name;
+        this.quantity = quantity;
+    }
+
     public Long getItemId() {
         return id;
     }

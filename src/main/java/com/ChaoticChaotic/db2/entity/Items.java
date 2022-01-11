@@ -1,10 +1,9 @@
 package com.ChaoticChaotic.db2.entity;
 
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 
 @Entity
@@ -22,8 +21,8 @@ public class Items {
     @Column(name = "quantity",nullable = false )
     private Long quantity;
 
-    @OneToOne(mappedBy = "item")
-    private Shippings shipping;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "item")
+    private Set<Shippings> shippings;
 
 
     public Items() {

@@ -1,16 +1,9 @@
 package com.ChaoticChaotic.db2.services;
 
-import com.ChaoticChaotic.db2.entity.Items;
 import com.ChaoticChaotic.db2.entity.Towns;
-import com.ChaoticChaotic.db2.exception.BadRequestException;
 import com.ChaoticChaotic.db2.exception.IdNotFoundException;
-import com.ChaoticChaotic.db2.repository.ItemsRepository;
-import com.ChaoticChaotic.db2.repository.ShippingsRepository;
 import com.ChaoticChaotic.db2.repository.TownsRepository;
-import com.ChaoticChaotic.db2.services.impl.ShippingsImpl;
 import com.ChaoticChaotic.db2.services.impl.TownsImpl;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;

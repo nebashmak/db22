@@ -19,11 +19,12 @@ public class Shippings {
     @Column(name = "end_date")
     private LocalDate endDate;
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE})
     @JoinColumn(name = "town_id",referencedColumnName = "town_id")
     private Towns town;
 
-    @OneToOne
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE})
     @JoinColumn(name = "items_id", referencedColumnName = "item_id")
     private Items item;
 

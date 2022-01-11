@@ -3,6 +3,7 @@ package com.ChaoticChaotic.db2.entity;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "towns")
@@ -19,8 +20,8 @@ public class Towns {
     @Column(name = "distance", nullable = false)
     private Long distance;
 
-    @OneToOne(mappedBy = "town")
-    private Shippings shipping;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "item")
+    private Set<Shippings> shippings;
 
     public Towns() {
     }
@@ -34,7 +35,6 @@ public class Towns {
         this.id = id;
         this.name = name;
         this.distance = distance;
-        this.shipping = shipping;
     }
 
 

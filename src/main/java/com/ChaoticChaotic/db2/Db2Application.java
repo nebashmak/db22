@@ -6,16 +6,13 @@ import com.ChaoticChaotic.db2.entity.Towns;
 import com.ChaoticChaotic.db2.repository.ItemsRepository;
 import com.ChaoticChaotic.db2.repository.ShippingsRepository;
 import com.ChaoticChaotic.db2.repository.TownsRepository;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 
-import javax.annotation.PostConstruct;
+
 import java.time.LocalDate;
 
 

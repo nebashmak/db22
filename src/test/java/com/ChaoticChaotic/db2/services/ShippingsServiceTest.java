@@ -2,14 +2,12 @@ package com.ChaoticChaotic.db2.services;
 
 
 import com.ChaoticChaotic.db2.entity.Items;
-import com.ChaoticChaotic.db2.entity.Shippings;
-import com.ChaoticChaotic.db2.entity.Towns;
+import com.ChaoticChaotic.db2.entity.Shipping;
+import com.ChaoticChaotic.db2.entity.Town;
 import com.ChaoticChaotic.db2.exception.BadRequestException;
 import com.ChaoticChaotic.db2.exception.IdNotFoundException;
 import com.ChaoticChaotic.db2.repository.ShippingsRepository;
 import com.ChaoticChaotic.db2.services.impl.ShippingsImpl;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -39,25 +37,25 @@ class ShippingsServiceTest {
 
     @Test
     void canAddShipping() {
-        Shippings test = new Shippings(1L, LocalDate.of(2021,1,24)
+        Shipping test = new Shipping(1L, LocalDate.of(2021,1,24)
                 ,LocalDate.of(2021,1,26)
-                ,new Towns(1L, "Voronezh",1222L),
+                ,new Town(1L, "Voronezh",1222L),
                  new Items(1L,"Oranges",1222L)
         );
         underTest.addShipping(test);
-        ArgumentCaptor<Shippings> shippingArgumentCaptor =
-                ArgumentCaptor.forClass(Shippings.class);
+        ArgumentCaptor<Shipping> shippingArgumentCaptor =
+                ArgumentCaptor.forClass(Shipping.class);
         verify(shippingsRepository)
                 .save(shippingArgumentCaptor.capture());
-        Shippings capturedShipping = shippingArgumentCaptor.getValue();
+        Shipping capturedShipping = shippingArgumentCaptor.getValue();
         assertThat(capturedShipping).isEqualTo(test);
     }
 
     @Test
     void whenEndDateIsBeforeStartThrowException() {
-        Shippings test = new Shippings(1L, LocalDate.of(2021,1,26)
+        Shipping test = new Shipping(1L, LocalDate.of(2021,1,26)
                 ,LocalDate.of(2021,1,24)
-                ,new Towns(1L, "Voronezh",1222L),
+                ,new Town(1L, "Voronezh",1222L),
                 new Items(1L,"Oranges",1222L)
         );
         assertThatThrownBy(()-> underTest.addShipping(test))

@@ -1,8 +1,8 @@
 package com.ChaoticChaotic.db2;
 
 import com.ChaoticChaotic.db2.entity.Items;
-import com.ChaoticChaotic.db2.entity.Shippings;
-import com.ChaoticChaotic.db2.entity.Towns;
+import com.ChaoticChaotic.db2.entity.Shipping;
+import com.ChaoticChaotic.db2.entity.Town;
 import com.ChaoticChaotic.db2.repository.ItemsRepository;
 import com.ChaoticChaotic.db2.repository.ShippingsRepository;
 import com.ChaoticChaotic.db2.repository.TownsRepository;
@@ -10,7 +10,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
 
 
 import java.time.LocalDate;
@@ -25,8 +24,6 @@ public class Db2Application {
 	}
 
 
-
-
 	@Bean
 	CommandLineRunner commandLineRunner(ItemsRepository itemsRepository,
 										ShippingsRepository shippingsRepository,
@@ -37,14 +34,14 @@ public class Db2Application {
 			Items item2 = new Items("Scoop", 1563L);
 			itemsRepository.save(item1);
 			itemsRepository.save(item2);
-			Towns town1 = new Towns("Moscow",850L);
-			Towns town2 = new Towns("Kazan",400L);
+			Town town1 = new Town("Moscow",850L);
+			Town town2 = new Town("Kazan",400L);
 			townsRepository.save(town1);
 			townsRepository.save(town2);
 			LocalDate date = LocalDate.now();
 			LocalDate date2 = LocalDate.of(2021,12,21);
-			Shippings shipping1 = new Shippings(date,date2,town1,item1);
-			Shippings shipping2 = new Shippings(date,date2,town2,item2);
+			Shipping shipping1 = new Shipping(date,date2,town1,item1);
+			Shipping shipping2 = new Shipping(date,date2,town2,item2);
 			shippingsRepository.save(shipping1);
 			shippingsRepository.save(shipping2);
 		};

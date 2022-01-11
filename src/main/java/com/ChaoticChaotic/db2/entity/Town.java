@@ -6,8 +6,8 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "towns")
-public class Towns {
+@Table(name = "town")
+public class Town {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -21,17 +21,17 @@ public class Towns {
     private Long distance;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "item")
-    private Set<Shippings> shippings;
+    private Set<Shipping> shippings;
 
-    public Towns() {
+    public Town() {
     }
 
-    public Towns(String name, Long distance) {
+    public Town(String name, Long distance) {
         this.name = name;
         this.distance = distance;
     }
 
-    public Towns(Long id, String name, Long distance) {
+    public Town(Long id, String name, Long distance) {
         this.id = id;
         this.name = name;
         this.distance = distance;
@@ -62,7 +62,7 @@ public class Towns {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Towns towns = (Towns) o;
+        Town towns = (Town) o;
         return Objects.equals(id, towns.id) && Objects.equals(name, towns.name) && Objects.equals(distance, towns.distance);
     }
 

@@ -1,9 +1,8 @@
 package com.ChaoticChaotic.db2.services.impl;
 
 
-import com.ChaoticChaotic.db2.entity.Towns;
+import com.ChaoticChaotic.db2.entity.Town;
 import com.ChaoticChaotic.db2.exception.IdNotFoundException;
-import com.ChaoticChaotic.db2.repository.ShippingsRepository;
 import com.ChaoticChaotic.db2.repository.TownsRepository;
 import com.ChaoticChaotic.db2.services.TownsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ public class TownsImpl implements TownsService {
     @Autowired
     private TownsRepository townsRepository;
 
-    public void addTown(Towns town) {
+    public void addTown(Town town) {
         townsRepository.save(town);
     }
 
@@ -30,7 +29,7 @@ public class TownsImpl implements TownsService {
         townsRepository.deleteById(id);
     }
 
-    public List<Towns> showTowns() {
+    public List<Town> showTowns() {
         return townsRepository.findAll();
     }
 

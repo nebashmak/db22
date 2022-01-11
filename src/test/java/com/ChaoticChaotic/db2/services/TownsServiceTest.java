@@ -1,6 +1,6 @@
 package com.ChaoticChaotic.db2.services;
 
-import com.ChaoticChaotic.db2.entity.Towns;
+import com.ChaoticChaotic.db2.entity.Town;
 import com.ChaoticChaotic.db2.exception.IdNotFoundException;
 import com.ChaoticChaotic.db2.repository.TownsRepository;
 import com.ChaoticChaotic.db2.services.impl.TownsImpl;
@@ -28,15 +28,15 @@ class TownsServiceTest {
 
     @Test
     void canAddTown() {
-        Towns test = new Towns(1L, "Voronezh"
+        Town test = new Town(1L, "Voronezh"
                 ,1222L
         );
         underTest.addTown(test);
-        ArgumentCaptor<Towns> townArgumentCaptor =
-                ArgumentCaptor.forClass(Towns.class);
+        ArgumentCaptor<Town> townArgumentCaptor =
+                ArgumentCaptor.forClass(Town.class);
         verify(townsRepository)
                 .save(townArgumentCaptor.capture());
-        Towns capturedShipping = townArgumentCaptor.getValue();
+        Town capturedShipping = townArgumentCaptor.getValue();
         assertThat(capturedShipping).isEqualTo(test);
     }
 

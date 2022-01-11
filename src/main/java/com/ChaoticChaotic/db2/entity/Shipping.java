@@ -3,10 +3,11 @@ package com.ChaoticChaotic.db2.entity;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
-@Table(name = "shippings")
-public class Shippings {
+@Table(name = "shipping")
+public class Shipping {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,17 +20,15 @@ public class Shippings {
     @Column(name = "end_date")
     private LocalDate endDate;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE})
-    @JoinColumn(name = "town_id",referencedColumnName = "town_id")
-    private Towns town;
+    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    // todo город должен ссылаться на шипинг @JoinColumn(name = "town_id",referencedColumnName = "town_id")
+    private Town town;
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    // todo товары должны ссылаться на шипинг @JoinColumn(name = "items_id", referencedColumnName = "item_id")
+    private Set<Items> item;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE})
-    @JoinColumn(name = "items_id", referencedColumnName = "item_id")
-    private Items item;
-
-
-    public Shippings(Long id, LocalDate startDate, LocalDate endDate, Towns town, Items item) {
+    public Shipping(Long id, LocalDate startDate, LocalDate endDate, Town town, Items item) {
         this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -37,14 +36,14 @@ public class Shippings {
         this.town = town;
     }
 
-    public Shippings(LocalDate startDate, LocalDate endDate, Towns town, Items item) {
+    public Shipping(LocalDate startDate, LocalDate endDate, Town town, Items item) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.item = item;
         this.town = town;
     }
 
-    public Shippings() {
+    public Shipping() {
     }
 
 
@@ -60,11 +59,11 @@ public class Shippings {
         this.item = item;
     }
 
-    public Towns getTown() {
+    public Town getTown() {
         return town;
     }
 
-    public void setTown(Towns town) {
+    public void setTown(Town town) {
         this.town = town;
     }
 
@@ -88,7 +87,7 @@ public class Shippings {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Shippings shippings = (Shippings) o;
+        Shipping shippings = (Shipping) o;
         return Objects.equals(id, shippings.id) && Objects.equals(item, shippings.item) && Objects.equals(town, shippings.town) && Objects.equals(startDate, shippings.startDate) && Objects.equals(endDate, shippings.endDate);
     }
 

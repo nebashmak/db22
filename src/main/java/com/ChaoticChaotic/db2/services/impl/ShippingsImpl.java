@@ -1,6 +1,7 @@
 package com.ChaoticChaotic.db2.services.impl;
 
-import com.ChaoticChaotic.db2.entity.Shippings;
+import com.ChaoticChaotic.db2.dto.ShippingCreatingDto;
+import com.ChaoticChaotic.db2.entity.Shipping;
 import com.ChaoticChaotic.db2.exception.BadRequestException;
 import com.ChaoticChaotic.db2.exception.IdNotFoundException;
 import com.ChaoticChaotic.db2.repository.ShippingsRepository;
@@ -16,13 +17,8 @@ public class ShippingsImpl implements ShippingsService {
     @Autowired
     private ShippingsRepository shippingsRepository;
 
-    public void addShipping(Shippings shipping) {
-    if (!shipping.getStartDate().isBefore(shipping.getEndDate())){
-            throw new BadRequestException(
-                    "Incorrect shipping dates!"
-            );
-        }
-        shippingsRepository.save(shipping);
+    public void addShipping(ShippingCreatingDto shipping) {
+        // todo сформировать сущности, связать их и сохранить в базу
     }
 
     public void deleteShipping(Long id) {
@@ -33,7 +29,7 @@ public class ShippingsImpl implements ShippingsService {
         shippingsRepository.deleteById(id);
     }
 
-    public List<Shippings> showShipping() {
+    public List<Shipping> showShipping() {
         return shippingsRepository.findAll();
     }
 

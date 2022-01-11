@@ -22,7 +22,7 @@ public class Items {
     private Long quantity;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "item")
-    private Set<Shippings> shippings;
+    private Set<Shipping> shippings;
 
 
     public Items() {
